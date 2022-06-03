@@ -34,7 +34,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" >
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
@@ -124,7 +124,7 @@
                                 </form>
                             </div>
                         </li>
-                      
+
 
                         <div class="topbar-divider d-none d-sm-block"></div>
 
@@ -132,14 +132,14 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Mr Foulen Ben Foulen</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
                                 <img class="img-profile rounded-circle"
                                     src="img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="{{route('welcome')}}" data-toggle="modal" data-target="#logoutModal">
+                                <a class="dropdown-item" href="{{ route('signout') }}"data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
                                 </a>
@@ -163,35 +163,44 @@
                     <div class="row">
 
                         <!-- Earnings (Monthly) Card Example -->
+                        @foreach($data as $item)
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-primary shadow h-100 py-2">
-                                <div class="card-body"  data-bs-toggle="modal" data-bs-target="#Training">
+                                <div class="card-body" >
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2 ml-4 cardbg">
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">JavaScript</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800 " style="padding:20px;">Training : {{$item['nomFormation']}}</div>
                                         </div>
-                                        <div class="col-auto mr-5">
-                                            <i class="fas fa-minus fa-2x " style="color:#df1b1b;"></i>
+                                        <div class="col-auto mr-6">
+                                        
+                                            
+
+                
+                                            <div class=" mb-3">
+                                                <label>Trainer : {{$item['nomFormateur']}}</label>
+                                            </div>
+                                            
+                                            <!-- Date number input-->
+                                            <div class=" mb-3 input-group date" id='datetimepicker1'>
+                                                <label >
+                                                Date : {{$item['date']}}
+                                                    
+                                                </label>
+                                            </div>
+                                            <!-- Message input-->
+                                            <div class=" mb-3">
+                                                <label >Description : {{$item['description']}}</label>
+                                            </div>
+                                           
+                                        
+                                        <a href="dl/{{$item['id']}}"><button class="btn btn-primary btn-xl btn-danger" type="button">Delete</button></a>
+
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                             <!-- Earnings (Monthly) Card Example -->
-                             <div class="col-xl-3 col-md-6 mb-4">
-                                <div class="card border-left-primary shadow h-100 py-2">
-                                    <div class="card-body"  data-bs-toggle="modal" data-bs-target="#Training">
-                                        <div class="row no-gutters align-items-center">
-                                            <div class="col mr-2 ml-4 cardbg">
-                                                <div class="h5 mb-0 font-weight-bold text-gray-800">Angular</div>
-                                            </div>
-                                            <div class="col-auto mr-5">
-                                                <i class="fas fa-minus fa-2x " style="color:#df1b1b;"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        @endforeach
 
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-primary shadow h-100 py-2">
@@ -201,7 +210,7 @@
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">Add Training</div>
                                         </div>
                                         <div class="col-auto mr-5">
-                                            <i class="fas fa-plus fa-2x text-gray-300"></i>
+                                            <i class="fas fa-plus fa-2x text-primary"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -251,7 +260,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="{{route('welcome')}}">Logout</a>
+                    <a class="btn btn-primary" href="{{route('signout')}}">Logout</a>
                 </div>
             </div>
         </div>
@@ -276,30 +285,32 @@
                                 <!-- Contact Section Form-->
                                 <div class="row justify-content-center">
                                     <div class="col-lg-8 col-xl-7">
-                                        <form id="contactForm" data-sb-form-api-token="API_TOKEN" action="Crudcontroller" method="POST" enctype="multipart/form-data">
+                                    <form action="/InsertSuccess" method="POST" enctype="multipart/form-data">
+                                            @csrf
+
                                              <!-- pic-->
-                                            
+
                                             <!-- Name input-->
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" id="name" type="text" placeholder="Enter your name..." data-sb-validations="required" />
+                                                <input class="form-control" id="name" type="text" placeholder="Enter your name..." data-sb-validations="required"   name="nomFormation"/>
                                                 <label for="name">Training Name</label>
-                                                <div class="invalid-feedback" data-sb-feedback="name:required" name="name">A name is required.</div>
+                                                <div class="invalid-feedback" data-sb-feedback="name:required" >A name is required.</div>
                                             </div>
                                             <!-- Email address input-->
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" type="text" placeholder="name@example.com" data-sb-validations="required,email" />
+                                                <input class="form-control" type="text" placeholder="name@example.com" data-sb-validations="required,email" name="nomFormateur"/>
                                                 <label for="email">Trainer Name</label>
-                                                <div class="invalid-feedback" data-sb-feedback="email:required" name="tname">Trainer Name is required.</div>
+                                                <div class="invalid-feedback" data-sb-feedback="email:required" >Trainer Name is required.</div>
                                             </div>
                                             <!-- Date number input-->
                                             <div class="form-floating mb-3 input-group date" id='datetimepicker1'>
-                                                <input class="form-control" type="datetime-local" />
+                                                <input class="form-control" type="date" name="date"/>
                                                 <label for="phone">Date & Time</label>
-                                                <div class="invalid-feedback" data-sb-feedback="phone:required" name="date">Date is required.</div>
+                                                <div class="invalid-feedback" data-sb-feedback="phone:required" >Date is required.</div>
                                             </div>
                                             <!-- Message input-->
                                             <div class="form-floating mb-3">
-                                                <textarea class="form-control" id="message" type="text" placeholder="Enter your message here..." style="height: 10rem" name="desc"></textarea>
+                                                <textarea class="form-control" id="message" type="text" placeholder="Enter your message here..." style="height: 10rem" name="description"></textarea>
                                                 <label for="message">Description</label>
                                             </div>
                                             <!-- Submit success message-->
@@ -329,14 +340,28 @@
 
 <!-- Training Modal-->
 <div class="portfolio-modal modal fade" id="Training" tabindex="-1" aria-labelledby="Training" aria-hidden="true">
-    <div class="modal-dialog modal-xl">
-        <div class="modal-content">
-            <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button></div>
-            <div class="modal-body text-center pb-5">
-                <button class="btn btn-primary btn-xl" type="submit">Registre</button>
+<div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button></div>
+                    <div class="modal-body text-center pb-5">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-8">
+                                    <!-- Portfolio Modal - Title-->
+                                    <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0"></h2>
+                                    <!-- Icon Divider-->
+                                    <div class="divider-custom">
+                                        <div class="divider-custom-line"></div>
+                                        <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                                        <div class="divider-custom-line"></div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
 </div>
  <!-- **************************************** -->
     <!-- Bootstrap core JavaScript-->

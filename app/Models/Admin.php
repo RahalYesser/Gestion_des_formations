@@ -9,7 +9,11 @@ class Admin extends Model
 {
     use HasFactory;
 
+    protected $guarded=[];
+
     public function formations(){
         return $this->HasMany(Formation::class);
         }
+
+        
 }

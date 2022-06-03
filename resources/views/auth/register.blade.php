@@ -39,44 +39,45 @@
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
                             </div>
-                            <form class="user">
+                            <form action="{{ route('register.custom') }}" method="POST">
+                                @csrf
+                                <div class="form-group">
+                                        <input type="text" class="form-control form-control-user" id="nomprenom" name="nomprenom" placeholder="Full Name" required autofocus>
+                                        @if ($errors->has('name'))
+                                        <span class="text-danger">{{ $errors->first('name') }}</span>
+                                        @endif
+                                 </div>
+                                <div class="form-group">
+                                    <input type="email" class="form-control form-control-user" id="email"
+                                        placeholder="Email Address" name="email" required autofocus>
+                                        @if ($errors->has('email'))
+                                        <span class="text-danger">{{ $errors->first('email') }}</span>
+                                       @endif
+                                </div>
                                 <div class="form-group">
                                     
-                                        <input type="text" class="form-control form-control-user" id="exampleFirstName"
-                                            placeholder="Full Name">
-                                   
-                    
-                                </div>
-                                <div class="form-group">
-                                    <input type="email" class="form-control form-control-user" id="exampleInputEmail"
-                                        placeholder="Email Address">
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="password" class="form-control form-control-user"
-                                            id="exampleInputPassword" placeholder="Password">
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <input type="password" class="form-control form-control-user"
-                                            id="exampleRepeatPassword" placeholder="Repeat Password">
-                                    </div>
+                                        <input type="password" class="form-control form-control-user" placeholder="Password" id="password" name="password" required>
+                                            @if ($errors->has('password'))
+                                            <span class="text-danger">{{ $errors->first('password') }}</span>
+                                            @endif
+                                  
 
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" class="form-control form-control-user" id="exampleFirstName"
-                                            placeholder="Class">
+                                        <input type="text" class="form-control form-control-user" id="class"
+                                            placeholder="Class" name="class" required autofocus >
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control form-control-user" id="exampleLastName"
-                                            placeholder="Intitut">
+                                        <input type="text" class="form-control form-control-user" id="etablissment"
+                                            placeholder="Intitut" name="etablissment" autofocus required>
                                     </div>
                                 </div>
-                                <a href="{{route('loginetudiant')}}" class="btn btn-primary btn-user btn-block">
+                                <button type="submit" class="btn btn-primary btn-user btn-block">
                                     Register Account
-                                </a>
-                                
-                                
+                                </button>
+
+
                             </form>
                             <hr>
                             <div class="text-center">

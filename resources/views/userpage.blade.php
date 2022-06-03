@@ -33,7 +33,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
@@ -51,12 +51,7 @@
             </li>
 
 
-            <!-- Nav Item - Tables
-            <li class="nav-item">
-                <a class="nav-link" href="{{route('etudiantlist')}}">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Student List</span></a>
-            </li> -->
+          
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
@@ -131,19 +126,16 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Foulen Ben Foulen</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
                                 <img class="img-profile rounded-circle"
                                     src="img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="{{route('profiletudiant')}}">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Profile
-                                </a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="{{route('welcome')}}" data-toggle="modal" data-target="#logoutModal">
+                               
+                                
+                                <a class="dropdown-item" href="{{route('signout')}}" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
                                 </a>
@@ -166,40 +158,48 @@
                     <!-- Content Row -->
                     <div class="row">
 
-                        <!-- Earnings (Monthly) Card Example -->
+                    @foreach($data as $item)
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-primary shadow h-100 py-2">
-                                <div class="card-body"  data-bs-toggle="modal" data-bs-target="#Training">
+                                <div class="card-body" >
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2 ml-4 cardbg">
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">JavaScript</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800 " style="padding:20px;">Training : {{$item['nomFormation']}}</div>
                                         </div>
-                                        <div class="col-auto mr-5">
-                                            <i class="fas fa-minus fa-2x " style="color:#df1b1b;"></i>
+                                        <div class="col-auto mr-6">
+                                        
+                                            
+
+                
+                                            <div class=" mb-3">
+                                                <label>Trainer : {{$item['nomFormateur']}}</label>
+                                            </div>
+                                            
+                                            <!-- Date number input-->
+                                            <div class=" mb-3 input-group date" id='datetimepicker1'>
+                                                <label >
+                                                Date : {{$item['date']}}
+                                                    
+                                                </label>
+                                            </div>
+                                            <!-- Message input-->
+                                            <div class=" mb-3">
+                                                <label >Description : {{$item['description']}}</label>
+                                            </div>
+                                           
+                                        
+                                        <a href=""><button class="btn btn-primary btn-xl" type="button">Register</button></a>
+
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                             <!-- Earnings (Monthly) Card Example -->
-                             <div class="col-xl-3 col-md-6 mb-4">
-                                <div class="card border-left-primary shadow h-100 py-2">
-                                    <div class="card-body"  data-bs-toggle="modal" data-bs-target="#Training">
-                                        <div class="row no-gutters align-items-center">
-                                            <div class="col mr-2 ml-4 cardbg">
-                                                <div class="h5 mb-0 font-weight-bold text-gray-800">Angular</div>
-                                            </div>
-                                            <div class="col-auto mr-5">
-                                                <i class="fas fa-minus fa-2x " style="color:#df1b1b;"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        @endforeach   
 
                         
                     <!-- Content Row -->
-                    <div class="row">
+                    </div>
 
                 </div>
                 <!-- /.container-fluid -->
@@ -242,7 +242,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="{{route('welcome')}}">Logout</a>
+                    <a class="btn btn-primary" href="{{route('signout')}}">Logout</a>
                 </div>
             </div>
         </div>

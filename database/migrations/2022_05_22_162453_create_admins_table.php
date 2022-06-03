@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('admins', function (Blueprint $table) {
             $table->id();
             $table->string('admin_name',40);
-            $table->string('key',30);
+            $table->string('key');
             $table->timestamps();
         });
     }

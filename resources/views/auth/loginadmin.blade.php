@@ -9,17 +9,18 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>User - Login</title>
+    <title>Admin - Login</title>
+
+    <link rel="icon" type="image/x-icon" href="{{ asset('img/undraw_profile.svg') }}" />
 
     <!-- Custom fonts for this template-->
-    <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ URL::asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
-    
+    <link href="{{ URL::asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
 
 </head>
 
@@ -40,22 +41,24 @@
                             <div class="col-lg-6">
                                 <div class="p-5">
                                     <div class="text-center">
-                                        <h1 class="h5 text-primary mb-3">User</h1>
+                                        <h1 class="h5 text-primary mb-3">Admin</h1>
                                     </div>
-                                    
                                     <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Welcome Back Guys!</h1>
+                                        <h1 class="h4 text-gray-900 mb-4">Welcome Back Mr ,Mrs!</h1>
                                     </div>
-                                    <form class="user">
-                                        <div class="form-group">
-                                            <input type="email" class="form-control form-control-user"
-                                                id="exampleInputEmail" aria-describedby="emailHelp"
-                                                placeholder="Enter Email Address...">
+                                    <form method="POST" action="/Admin">
+                                        @csrf
+                                    <div class="form-group">
+                                            <input type="text" class="form-control form-control-user"
+                                                id="admin_name"
+                                                placeholder="Admin Name" name="admin_name" required autofocus>
                                         </div>
                                         <div class="form-group">
                                             <input type="password" class="form-control form-control-user"
-                                                id="exampleInputPassword" placeholder="Password">
+                                                id="key" aria-describedby="emailHelp"
+                                                placeholder="Registration Key" name="key" required>
                                         </div>
+
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
                                                 <input type="checkbox" class="custom-control-input" id="customCheck">
@@ -63,18 +66,16 @@
                                                     Me</label>
                                             </div>
                                         </div>
-                                        <a href="{{route('profiletudiant')}}" class="btn btn-primary btn-user btn-block">
+                                        <button type="submit" class="btn btn-primary btn-user btn-block">
                                             Login
-                                        </a>
-                                       
+                                        </button>
+
                                     </form>
                                     <hr>
                                     <div class="text-center">
-                                        <a class="small" href="#">Forgot Password?</a>
+                                        <a class="small" href="#">Forgot Your Key?</a>
                                     </div>
-                                    <div class="text-center">
-                                        <a class="small" href="{{route('register')}}">Create an Account!</a>
-                                    </div>
+
                                 </div>
                             </div>
                         </div>

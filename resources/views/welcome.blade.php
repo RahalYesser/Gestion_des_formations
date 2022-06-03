@@ -63,14 +63,14 @@
 </head>
 
 <body>
-   
-    
+
+
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white">
         <div class="container">
             <!-- Brand -->
             <a class="navbar-brand" href="index.html">
-                
+
             </a>
             <!-- Toggler -->
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -79,24 +79,24 @@
             <!-- Collapse -->
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav mt-4 mt-lg-0 ml-auto">
-                    
+
                     <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
-                        
+
                         <div class="dropdown-menu dropdown-menu-single">
                             <a href="" class="dropdown-item">Homepage</a>
                             <a href="" class="dropdown-item">About us</a>
                             <a href="" class="dropdown-item">Contact</a>
-                            
-                            
+
+
                         </div>
                     </li>
-                   
+
                 </ul>
                 <!-- Button -->
                 <a class="navbar-btn btn btn-sm btn-primary d-none d-lg-inline-block ml-3" href="{{ route('loginadmin') }}">
                     Admin Login
                 </a>
-                
+
             </div>
         </div>
     </nav>
@@ -131,9 +131,9 @@
             </div>
         </div>
     </section>
-    
+
     <footer class="position-relative" id="footer-main">
-       
+
     </footer>
     <!-- Core JS  -->
     <script src="{{ asset('assets/libs/jquery/dist/jquery.min.js') }}"></script>

@@ -22,7 +22,7 @@
             <div class="container">
                 <a href="{{route('userpage')}}" class="btn btn-success btn-icon-split">
                     <span class="icon text-white-70">
-                        <i class="fas fa-arrow-right"></i> 
+                        <i class="fas fa-arrow-right"></i>
                      </span>
                      <span class="font-weight-bold">Register for training</span>
                 </a>
@@ -33,7 +33,7 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#portfolio">Portfolio</a></li>
-                       
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{{ route('signout') }}">Signout</a></li>
                     </ul>
                 </div>
             </div>
@@ -44,7 +44,7 @@
                 <!-- Masthead Avatar Image-->
                 <img class="masthead-avatar mb-5" src="{{ asset('img/avataaars.svg') }}" alt="..." />
                 <!-- Masthead Heading-->
-                <h1 class="masthead-heading text-uppercase mb-0">Foulen Ben Foulen</h1>
+                <h1 class="masthead-heading text-uppercase mb-0">{{$data['nomprenom']}}</h1>
                 <!-- Icon Divider-->
                 <div class="divider-custom divider-light">
                     <div class="divider-custom-line"></div>
@@ -52,7 +52,7 @@
                     <div class="divider-custom-line"></div>
                 </div>
                 <!-- Masthead Subheading-->
-                <p class="masthead-subheading font-weight-light mb-0">Class : DSI22   -   Institution : ISET BIZERTE       </p>
+                <p class="masthead-subheading text-uppercase font-weight-light mb-0">Class : {{$data['class']}}  - Institut : {{$data['etablissment']}}   </p>
             </div>
         </header>
         <!-- Portfolio Section-->
@@ -74,17 +74,17 @@
                             <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                                 <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
                             </div>
-                            <img class="img-fluid" src="{{ asset('img/portfolio/Html.png') }}" alt="..." />
+                            
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
         </section>
         <!-- About Section-->
-        
+
         <!-- Contact Section-->
-      
+
         <!-- Footer-->
         <footer class="footer text-center">
             <div class="container">
@@ -141,7 +141,7 @@
                                         <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
                                         <div class="divider-custom-line"></div>
                                     </div>
-                                   
+
                                 </div>
                             </div>
                         </div>
@@ -149,7 +149,7 @@
                 </div>
             </div>
         </div>
-        
+
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
